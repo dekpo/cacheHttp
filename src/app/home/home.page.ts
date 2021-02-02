@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CacheService } from "ionic-cache";
-import { getLocaleDateFormat } from '@angular/common';
+
 
 @Component({
   selector: 'app-home',
@@ -35,6 +35,11 @@ export class HomePage {
     });
 
     }
+    
+    onImageLoad(event){
+      console.log(event);
+    }
+  
 
   ionViewDidEnter(){
     
