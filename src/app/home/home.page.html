@@ -9,6 +9,7 @@
 <ion-content [fullscreen]="true">
   
   <ion-button expand="block" (click)="getData()">GET DATA</ion-button>
+  <ion-button expand="block" color="danger" (click)="clearCache()">CLEAR CACHE</ion-button>
   <ion-list>
     <ion-item *ngFor="let pic of apiData">
       <ion-thumbnail slot="start">

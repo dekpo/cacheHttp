@@ -16,6 +16,10 @@ export class HomePage {
 
     apiData : any;
 
+    clearCache(){
+      this.cache.clearAll();
+    }
+
     getData(){
       const URL = "https://picsum.photos/v2/list?limit=10";
 
