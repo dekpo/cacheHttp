@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { CacheService } from "ionic-cache";
+import { getLocaleDateFormat } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +10,29 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(
+    private http:HttpClient,
+    private cache:CacheService) {}
+
+    getData(){
+      const URL = "https://picsum.photos/v2/list?limit=10";
+
+    /* this.http.get( URL ).subscribe( (data) => {
+      console.log(data);
+    }); */
+    // on remplace le http.get() par un appel du cache
+    const request = this.http.get( URL );
+    this.cache.loadFromObservable('myCache', request ).subscribe( (data) => {
+      console.log(data);
+    });
+
+    }
+
+  ionViewDidEnter(){
+    
+    this.getData();
+
+  }
+
 
 }
