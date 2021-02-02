@@ -14,6 +14,8 @@ export class HomePage {
     private http:HttpClient,
     private cache:CacheService) {}
 
+    apiData : any;
+
     getData(){
       const URL = "https://picsum.photos/v2/list?limit=10";
 
@@ -21,8 +23,10 @@ export class HomePage {
       console.log(data);
     }); */
     // on remplace le http.get() par un appel du cache
+    
     const request = this.http.get( URL );
     this.cache.loadFromObservable('myCache', request ).subscribe( (data) => {
+      this.apiData = data;
       console.log(data);
     });
 
